@@ -5,6 +5,13 @@ date:   2024-10-22 19:30:34 +0300
 categories: nodejs
 ---
 
+### Installation
+
+```shell
+npm install -g express-generator
+express --view=pug my-app
+```
+
 ### Directory Structure
 
 ```shell
