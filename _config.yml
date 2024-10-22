@@ -21,11 +21,12 @@
 title: ErtugrulAKCA
 email: akcaertugrulgazi@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  I am sharing my notes in this website.
+  I am sharing blogs in this website.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ertugrulakca.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: aertorule
 github_username:  akcauser
+linkedin_username:  akcauser
 
 # Build settings
 theme: minima
