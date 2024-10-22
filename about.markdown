@@ -19,4 +19,4 @@ Some Projects I've worked on:
 * Student Branch Management System
 * CMS for a Website
 
-When I'm not coding, I enjoy tennis(on cort), books, darts, chess.
+When I'm not coding, I enjoy tennis(on court), books, darts, chess.
