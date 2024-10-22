@@ -1,0 +1,48 @@
+---
+layout: post
+title:  "Dependency Management with npm"
+date:   2024-10-22 11:30:34 +0300
+categories: nodejs
+---
+### Package Install
+
+```shell
+npm install {package-name}
+```
+
+### Global package install
+
+```shell
+npm install -g {package-name}
+```
+
+### List Packages
+
+```shell
+npm list
+```
+
+### Update Package
+
+```shell
+npm update {package-name}
+```
+
+### Outdated Packages
+
+```shell
+npm outdated
+```
+
+### Install for Dev Environment
+
+```shell
+npm install {package-name} --save-dev
+```
+
+### Remove package
+
+```shell
+npm uninstall {package-name}
+npm uninstall {package-name} --no-save # don't remove in package.json
+```
