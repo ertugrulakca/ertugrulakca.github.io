@@ -1,0 +1,174 @@
+---
+layout: post
+title:  "HTTP Server and Nodemon"
+date:   2024-10-22 11:30:34 +0300
+categories: nodejs
+---
+### Serve an HTTP Server
+
+```js
+const http = require('http');
+
+const server = http.createServer((request, response) => {
+    response.writeHead(200, { 'Content-Type': 'text/html' });
+    response.write("<b>Hello</b> world!");
+    response.end();
+});
+
+server.listen(3000);
+```
+
+### Nodemon
+
+```shell
+npm install -g nodemon
+nodemon helloworld.js
+```
+
+
+### Serve an HTML File
+
+```js
+const http = require('http');
+const fs = require('fs');
+
+const server = http.createServer((request, response) => {
+    response.writeHead(200, { 'Content-Type': 'text/html' });
+    fs.readFile('./index.html', 'utf8', (err, data) => {
+        if (err) throw err;
+
+        response.end(data);
+    })
+});
+
+server.listen(3000);
+```
+
+### Simple Routing
+
+```js
+const http = require('http');
+
+const server = http.createServer((request, response) => {
+    response.writeHead(200, { 'Content-Type': 'text/html' });
+    
+    if (request.method === 'GET' && request.url === '/') {
+        response.write("<b>Hello</b> world!");
+    } else if (request.method === 'GET' && request.url === '/contact') {
+        response.write("Contact Page");
+    } else {
+        response.write("404 Not Found");
+    }
+    
+    response.end();
+});
+
+server.listen(3000);
+```
+
+### File Read Stream
+
+```js
+const fs = require('fs');
+
+const file = 'file-path';
+const readStream = fs.createReadStream(file);
+let progress = 0;
+
+fs.stat(file, (err, stats) => {
+    if (err) throw err;
+
+    const total = stats.size;
+
+    readStream.on('data', (chunk) => {
+        console.log('data arrived:', chunk);
+        progress += chunk.length;
+        console.log(Math.round((progress / total) * 100), '%');
+    })
+
+    readStream.on('end', () => {
+        console.log('end');
+    })
+})
+```
+
+### File Write stream
+
+```js
+const fs = require('fs');
+
+const file = '../../Documents/Github/my-awesome-site/assets/images/me.JPG';
+const readStream = fs.createReadStream(file);
+const writeStream = fs.createWriteStream('new-image.JPG');
+let progress = 0;
+
+fs.stat(file, (err, stats) => {
+    if (err) throw err;
+
+    const total = stats.size;
+
+    readStream.on('data', (chunk) => {
+        console.log('data arrived:', chunk);
+        progress += chunk.length;
+        console.log(Math.round((progress / total) * 100), '%');
+    })
+
+    readStream.pipe(writeStream); // add writeStream as pipe to readStream
+    writeStream.on('end', () => {
+        console.log('New file created');
+    })
+
+    readStream.on('end', () => {
+        console.log('end');
+    })
+});
+```
+ 
+
+### Serve chunked file 
+
+```js
+const fs = require('fs');
+const http = require('http');
+
+const server = http.createServer((request, response) => {
+    const file = './new-image.JPG';
+
+    fs.createReadStream(file).pipe(response);
+});
+
+server.listen(3000);
+```
+
+
+### Example | Finish request on half of progress
+
+```js
+const fs = require('fs');
+const http = require('http');
+
+const server = http.createServer((request, response) => {
+    const file = './new-image.JPG';
+    let progress = 0;
+    let percentage = 0;
+    fs.stat(file, (err, stats) => {
+        if (err) throw err;
+
+        const total = stats.size;
+
+        const readStream = fs.createReadStream(file);
+        readStream.pipe(response);
+
+        readStream.on('data', (chunk) => {
+            console.log('data arrived:', chunk);
+            progress += chunk.length;
+            percentage = (progress / total) * 100;
+            if (percentage > 50) {
+                response.end();
+            }
+        })
+    })
+});
+
+server.listen(3000);
+```
