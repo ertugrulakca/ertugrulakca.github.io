@@ -28,6 +28,12 @@ db.createCollection("posts")
 db.posts.insertOne({ id: 1, title: 'blog 1' })
 ```
 
+### Insert Many
+
+```
+db.posts.insertMany([{ id: 1, title: 'blog 1' }, { id: 2, title: 'blog 2' }])
+```
+
 ### Get All Data
 
 ```
@@ -44,4 +50,18 @@ db.posts.find({slug:'blog-1'})
 
 ```
  db.books.deleteMany({})
+```
+
+### findOne
+
+* Only title field included.
+
+```
+db.posts.findOne({ slug:'blog-1' }, { title: 1 })
+```
+
+* Eclude slug field.
+
+```
+db.posts.findOne({ slug:'blog-1' }, { slug: 0 })
 ```
