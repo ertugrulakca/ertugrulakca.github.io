@@ -1,0 +1,47 @@
+---
+layout: post
+title:  "MongoDB"
+date:   2024-10-23 12:30:00 +0300
+categories: nodejs
+---
+
+### Installation
+
+```shell
+brew tap mongodb/brew
+brew update
+brew install mongodb-community@8.0
+brew services start mongodb-community@8.0
+mongosh
+```
+
+### Create Collection
+
+```
+use blog
+db.createCollection("posts")
+```
+
+### Insert One
+
+```
+db.posts.insertOne({ id: 1, title: 'blog 1' })
+```
+
+### Get All Data
+
+```
+db.posts.find({})
+```
+
+### Get Filtered Data
+
+```
+db.posts.find({slug:'blog-1'})
+```
+
+### Delete All Data
+
+```
+ db.books.deleteMany({})
+```
