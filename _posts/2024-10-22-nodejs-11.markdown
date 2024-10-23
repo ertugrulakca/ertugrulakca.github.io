@@ -6,7 +6,7 @@ categories: nodejs
 ---
 ### Route Expressions
 
-* "?": left is an optional value 
+* "?": left is an optional value
 * "*": any value
 * "+": left part should be match
 

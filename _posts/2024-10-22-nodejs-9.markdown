@@ -83,7 +83,7 @@ div
 
 ### If Statement
 
-```jade 
+```jade  
 - const myBool = true;
 
 if myBool

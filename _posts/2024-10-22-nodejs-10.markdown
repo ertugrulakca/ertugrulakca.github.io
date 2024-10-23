@@ -7,6 +7,7 @@ categories: nodejs
 ### Pug Layout Extends
 
 * Layout file
+
 ```jade
 head
     block stylesheet
@@ -20,7 +21,7 @@ body
 
 Use append to add more code to block
 
-```jade 
+```jade
 extends layout
 
 block append stylesheet
@@ -34,7 +35,7 @@ block content
 
 * Contact
 
-```jade 
+```jade
 extends layout
 
 block content
