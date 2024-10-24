@@ -92,3 +92,15 @@ router.delete('/:id', async function(req, res, next) {
 
 module.exports = router;
 ```
+
+### $exists
+
+* Only returns documents that exist title field.
+
+```js
+const books = await Book.find({
+      title: {
+        $exists: true
+      }
+  });
+```
