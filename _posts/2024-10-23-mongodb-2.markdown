@@ -104,3 +104,25 @@ const books = await Book.find({
       }
   });
 ```
+
+### minLength, maxLength, min, max
+
+```js
+const BookSchema = new Schema({
+    title: {
+        type: String,
+        default: 'Default Title', // default value if key not exists
+        maxlength: [5, 'Maximum Character Count Exceeded for "{PATH}", Entered Value: "{VALUE}"'], // Maximum character count
+        minLength: 2,
+    },
+    slug: {
+        type: String, // data type
+        required: true, // is data required or not
+    },
+    numberOfPages: {
+        type: Number,
+        min: 1,
+        max: 2000
+    }
+});
+```
