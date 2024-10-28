@@ -39,6 +39,7 @@ npm install mongoose-paginate
 ```
 
 * Schema
+
 ```js
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2'); // add this line
