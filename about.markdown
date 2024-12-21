@@ -84,6 +84,9 @@ I am a dedicated software engineer with 6 years of experience in coding and proj
 - **CRUD Generator for Laravel**: Developed expertise in automating API and CRUD operations using Cruder, a PHP package designed to streamline development and enhance productivity.  
 
 ## Certifications
+
+I took these courses to develop myself professionally and gain in-depth knowledge about different technologies. Each of them has helped me become more proficient in my field and acquire new skills. These certifications are important steps in expanding my technical knowledge and enhancing my problem-solving abilities.
+
 - Redis University (RU202, RU101)  
 - Go Programming Language  
 - AWS Technical Essentials  
