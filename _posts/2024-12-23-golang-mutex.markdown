@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Nginx Configurations"
+title:  "Golang Mutex Usage"
 date:   2024-12-19 22:00:00 +0300
 categories: golang
 ---
