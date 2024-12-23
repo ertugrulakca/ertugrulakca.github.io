@@ -54,7 +54,7 @@ import (
 
 func main() {
 	var counter int
-	var mu sync.Mutex // Define Mutext
+	var mu sync.Mutex // Define Mutex
 	var wg sync.WaitGroup
 
 	for i := 0; i < 50000; i++ {
