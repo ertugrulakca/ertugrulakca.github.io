@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Golang Mutex Usage"
-date:   2024-12-24 22:00:00 +0300
+date:   2024-12-23 22:00:00 +0300
 categories: golang
 ---
 
