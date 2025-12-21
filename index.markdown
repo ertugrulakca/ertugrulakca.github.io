@@ -35,7 +35,7 @@ title: About
 
 <script>
   (function() {
-    const texts = ['Ertugrul', 'Software Engineer', "Full Stack Developer",'Laravel Developer', 'VueJS Developer'];
+    const texts = ['Ertugrul', 'Software Engineer', "Full Stack Developer",'Laravel Developer', 'VueJS Developer', 'ITF&TTF Tennis Player', 'Tennis Trainer', 'Amateur Radio Operator', 'Amateur Sailor'];
     let currentIndex = 0;
     const element = document.getElementById('animatedText');
     
