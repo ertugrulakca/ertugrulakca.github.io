@@ -1,0 +1,107 @@
+---
+layout: post
+title:  "Ecmascript 6 - ES6"
+date:   2024-10-22 11:30:34 +0300
+categories: nodejs
+---
+### let, const
+### Template literal
+
+```js
+const var1 = 'test1';
+
+console.log(`${var1}`); // test1
+```
+
+### Destructing for object and array
+
+```js
+const vars = { var1: 'test1', var2: 'test2' };
+const { var1, var2 } = vars;
+
+console.log(var1); // test1
+console.log(var2); // test2
+```
+
+### Spread Operator
+
+```js
+const myArr = [ 'foo', 'bar' ];
+
+console.log(...myArr); // foo bar
+```
+
+### Arrow Functions
+
+```js
+const myFunc = (value) => {
+    return `myFunc return value: ${value}`;
+}
+
+console.log(myFunc(5));
+```
+
+### Promise
+
+```js
+const asyncDivide = (a, b) => {
+    return new Promise((resolve, reject) => {
+        if (b === 0) {
+            reject("Can not divide by zero");
+        }
+
+        resolve(a/b);
+    })
+}
+
+asyncDivide(100, 10)
+    .then((res) => {
+        console.log(res);
+        return "New Value"
+    })
+    .then((res) => {
+        console.log("Second: ", res);
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+```
+
+### Async/Await
+
+```js
+const asyncDivide = async (a, b) => {
+    if (b === 0) {
+        throw Error("Can not divide by zero");
+    }
+    
+    return a/b;
+}
+
+try {
+    const res = await asyncDivide(100, 10);
+    console.log(res);
+    console.log("Second: ", "New Value");
+} catch(error) {
+    console.log(error);
+}
+```
+
+### Module Import with require
+
+```js
+const { foo, bar } = require('./module-path');
+
+console.log(foo());
+console.log(bar());
+```
+
+### Module Export with module.exports
+
+```js
+const foo = () => {
+    return 'foo';
+}
+
+module.exports.foo = foo
+```

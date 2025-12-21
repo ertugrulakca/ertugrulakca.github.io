@@ -1,0 +1,144 @@
+---
+layout: post
+title:  "MongoDB Aggregations with Mongoose"
+date:   2024-10-24 10:00:00 +0300
+categories: nodejs
+---
+
+### Sorting
+
+```js
+const books = await Book.find({}).sort({title:1}); // ASC
+const books = await Book.find({}).sort({title:-1}); // DESC
+```
+
+### Limit
+
+```js
+const books = await Book.find({}).sort({title:-1}).limit(2);
+```
+
+### Skip
+
+* Skip first n record
+
+```js
+const books = await Book.find({}).sort({title:1}).skip(2).limit(2);
+```
+
+### $match
+
+```js
+const books = await Book.aggregate([
+    {
+        $match: {
+            title: 'a'
+        }
+    }
+]);
+```
+
+### $group
+
+* Sum
+
+```js
+const books = await Book.aggregate([
+    {
+        $group: {
+            _id: '$title',
+            myCount: { $sum: 1 }
+        }
+    }
+]);
+```
+
+### $project
+
+```js
+router.get('/', async function(req, res, next) {
+    const books = await Book.aggregate([
+        {
+            $project: {
+                title: 1
+            }
+        }
+    ]);
+
+    res.json(books);
+});
+```
+
+### $sort, $limit, $skip
+
+```js
+router.get('/', async function(req, res, next) {
+    const books = await Book.aggregate([
+        {
+            $project: {
+                title: 1
+            }
+        },
+        {
+            $sort: {
+                title: -1
+            }
+        },
+        {
+            $limit: 5
+        },
+        {
+            $skip: 2
+        }
+    ]);
+
+    res.json(books);
+});
+```
+
+### $lookup
+
+```shell
+db.users.insertOne({name: 'John', username: 'johndoe'})
+db.books.insertOne({title: 'Foo', userId: ObjectId('6719ef784f09ffb8a481d77c')})
+```
+
+```js
+const books = await Book.aggregate([
+    {
+        $lookup: {
+            from: 'users',
+            localField: 'userId',
+            foreignField: '_id',
+            as: 'user'
+        }
+    }
+]);
+```
+
+### $unwind
+
+* Extract to a user object
+* Field include and exclude with $project
+
+```js
+const books = await Book.aggregate([
+    {
+        $lookup: {
+            from: 'users',
+            localField: 'userId',
+            foreignField: '_id',
+            as: 'user'
+        }
+    },
+    {
+        $unwind: '$user'
+    },
+    {
+        $project: {
+            title: 1,
+            username: '$user.username',
+        }
+    }
+]);
+```

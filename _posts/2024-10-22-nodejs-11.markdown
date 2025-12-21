@@ -1,0 +1,53 @@
+---
+layout: post
+title:  "Express Route"
+date:   2024-10-22 19:30:34 +0300
+categories: nodejs
+---
+### Route Expressions
+
+* "?": left is an optional value
+* "*": any value
+* "+": left part should be match
+
+```js
+app.get('/u+s?er*', (req, res) => {
+    res.render('index', { key: 'My World' });
+})
+```
+
+* "all": accepts all methods (get, post, put, delete etc.)
+
+```js
+app.all('/home', (req, res) => {
+    res.render('index', { key: 'My World' });
+})
+```
+
+### Route Parameter
+
+```js
+const express = require('express');
+
+const app = express();
+
+app.get('/users/:id', (req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write('userId: ' + req.params.id);
+    res.end();
+})
+```
+
+### Optional Route Parameter
+
+```js
+const express = require('express');
+
+const app = express();
+
+app.get('/users/:id?', (req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write('userId: ' + req.params.id);
+    res.end();
+})
+```

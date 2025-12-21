@@ -1,0 +1,81 @@
+---
+layout: post
+title:  "Events - I/O"
+date:   2024-10-22 11:30:34 +0300
+categories: nodejs
+---
+### Event Emitter
+
+```js
+const events = require('events');
+const eventEmitter = new events.EventEmitter();
+
+eventEmitter.on('test', () => {
+    console.log('hello world')
+});
+
+eventEmitter.emit('test');
+eventEmitter.emit('test');
+
+eventEmitter.once('testOnce', () => {
+    console.log('hello world once')
+});
+
+eventEmitter.emit('testOnce');
+eventEmitter.emit('testOnce'); // not run
+
+/*
+output:
+hello world
+hello world
+hello world once
+*/
+```
+
+### File Read
+
+```js
+const fs = require('fs');
+
+fs.readFile('./test.txt', 'utf8', (err, data) => {
+    if (err) throw err;
+
+    console.log(data)
+});
+```
+
+### File Append
+
+```js
+const fs = require('fs');
+
+fs.appendFile('./test.txt', 'hello', (err) => {
+    if (err) throw err;
+
+    console.log('Completed');
+});
+```
+
+### File Write
+
+```js
+const fs = require('fs');
+
+fs.writeFile('./test.txt', 'hello \n', (err) => {
+    if (err) throw err;
+
+    console.log('Completed');
+});
+```
+
+### Delete File
+
+```js
+const fs = require('fs');
+
+fs.unlink('./test.txt', (err) => {
+    if (err) throw err;
+
+    console.log('Deleted');
+})
+```

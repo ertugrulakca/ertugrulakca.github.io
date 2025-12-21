@@ -1,0 +1,104 @@
+---
+layout: post
+title:  "NodeJS Fundementals #2"
+date:   2024-10-22 11:30:34 +0300
+categories: nodejs
+---
+### Functions 
+
+```js
+function sum(a, b = 0) {
+    return a + b;
+}
+
+console.log(sum(5, 3)); // 8
+console.log(sum(5)); // 5
+```
+
+### Callback Functions
+
+```js
+function run(text, callback) {
+    console.log(text);
+    callback();
+} 
+
+run('Hello World', function () {
+    console.log('Callback Function')
+})
+```
+
+### "setTimeout" function
+
+```js
+setTimeout(function () {
+    console.log('Wrote after 5 seconds');
+}, 5000)
+```
+
+### "setInterval" function
+
+```js
+const myInterval = setInterval(function () {
+    console.log('Writes every 2 seconds forever');
+}, 2000);
+
+setTimeout(function () {
+    clearInterval(myInterval);
+}, 7000);
+```
+
+### For Loop
+
+```js
+for (var i = 0; i < 5; i++) {
+    console.log(i)
+}
+
+/*
+output:
+0
+1
+2
+3
+4
+*/
+```
+
+### While Loop
+
+```js
+var i = 0;
+
+while (i < 5) {
+    console.log(i++);
+}
+
+/*
+output:
+0
+1
+2
+3
+4
+*/
+```
+
+### Do-While Loop
+
+```js
+var i = 0;
+
+do {
+    console.log(i++);  
+} while (i < 5);
+
+/*
+output:
+0
+1
+2
+3
+4
+*/
+```

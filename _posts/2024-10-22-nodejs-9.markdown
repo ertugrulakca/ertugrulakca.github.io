@@ -1,0 +1,103 @@
+---
+layout: post
+title:  "Pug"
+date:   2024-10-22 17:55:34 +0300
+categories: nodejs
+---
+
+### Pug
+
+```shell
+npm i pug
+```
+
+```js
+const express = require('express');
+
+const app = express();
+
+app.set('view engine', 'pug');
+
+app.get('/', (req, res) => {
+    res.render('index');
+})
+
+app.listen(3000);
+```
+
+```jade
+html
+    head
+        title My Title Here
+    body
+        span(style="color: red; background-color:green;")
+            | Hello World
+```
+
+### Send Parameter to Pug
+
+```js
+const express = require('express');
+
+const app = express();
+
+app.set('view engine', 'pug');
+
+app.get('/', (req, res) => {
+    res.render('index', { key: 'My World' });
+})
+
+app.listen(3000);
+```
+
+```jade
+html
+    head
+        title My Title Here
+    body
+        span(style="color: red; background-color:green;")
+            | Hello #{key}
+```
+
+### Include Pug to another pug file
+
+```jade
+include header.pug
+include footer
+```
+
+### Pug Comment Line
+
+```jade
+// this is a comment line in pug file
+```
+
+### Define variables
+
+```jade
+- const myConst = 3.14;
+
+div
+    | Number: #{ myConst }
+```
+
+### If Statement
+
+```jade  
+- const myBool = true;
+
+if myBool
+    div 
+        | My div here
+else 
+    div
+        | My Else div
+```
+
+### Pug foreach loop
+
+```jade
+- const values = [1, 2, 3, 4, 5];
+    each val in values
+        li= val
+```

@@ -1,0 +1,34 @@
+---
+layout: post
+title:  "Express Generator"
+date:   2024-10-22 19:30:34 +0300
+categories: nodejs
+---
+
+### Installation
+
+```shell
+npm install -g express-generator
+express --view=pug my-app
+```
+
+### Directory Structure
+
+```shell
+├── app.js
+├── bin
+│   └── www
+├── package.json
+├── public
+│   ├── images
+│   ├── javascripts
+│   └── stylesheets
+│       └── style.css
+├── routes
+│   ├── index.js
+│   └── users.js
+└── views
+    ├── error.pug
+    ├── index.pug
+    └── layout.pug
+```

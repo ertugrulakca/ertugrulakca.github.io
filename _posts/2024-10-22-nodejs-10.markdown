@@ -1,0 +1,45 @@
+---
+layout: post
+title:  "Pug Layouts"
+date:   2024-10-22 19:30:34 +0300
+categories: nodejs
+---
+### Pug Layout Extends
+
+* Layout file
+
+```jade
+head
+    block stylesheet
+        link(href="layout.css" rel="stylesheet")
+body
+    block content
+    block scripts
+```
+
+* Home page
+
+Use append to add more code to block
+
+```jade
+extends layout
+
+block append stylesheet
+    link(href="home.css" rel="stylesheet")
+
+block content
+    | Home Page
+    br
+    a(href="/contact") Go to Contact
+```
+
+* Contact
+
+```jade
+extends layout
+
+block content
+    | Contact Page
+    br
+    a(href="/home") Go to Home
+```

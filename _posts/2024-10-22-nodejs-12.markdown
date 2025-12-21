@@ -1,0 +1,61 @@
+---
+layout: post
+title:  "Express Middleware"
+date:   2024-10-22 19:30:34 +0300
+categories: nodejs
+---
+### Express Middleware
+
+```js
+const express = require('express');
+
+const app = express();
+
+app.use('/home', (req, res, next) => {
+    const isLoggedIn = false;
+
+    if (!isLoggedIn) {
+        res.send('Authentication Error');
+    }
+
+    next();
+});
+
+app.get('/home', (request, response) => {
+    response.send('home');
+});
+
+app.get('/contact', (request, response) => {
+    response.send('contact');
+});
+
+app.listen(3000);
+```
+
+### Apply Middleware in Route Definitions
+
+```js
+const express = require('express');
+const app = express();
+
+// also can import in another file
+const auth = (req, res, next) => {
+    const isLoggedIn = false;
+
+    if (!isLoggedIn) {
+        res.send('Authentication Error');
+    }
+
+    next();
+}
+
+app.get('/home', auth, (request, response) => {
+    response.send('home');
+});
+
+app.get('/contact', (request, response) => {
+    response.send('contact');
+});
+
+app.listen(3000);
+```

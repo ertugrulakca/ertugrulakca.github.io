@@ -1,0 +1,128 @@
+---
+layout: post
+title:  "MongoDB with NodeJS"
+date:   2024-10-23 12:30:00 +0300
+categories: nodejs
+---
+
+### Connect Database
+
+```js
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/blog')
+    .then(() => {
+        console.log('DB Connected');
+    })
+    .catch((err) => {
+        console.log('DB Error');
+    });
+```
+
+### Schema (Book.js)
+
+```js
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const BookSchema = new Schema({
+    title: {
+        type: String,
+        default: 'Default Title', // default value if key not exists
+    },
+    slug: {
+        type: String, // data type
+        required: true, // is data required or not
+    }
+});
+
+module.exports = mongoose.model('book', BookSchema);
+```
+
+### Create, Read, Update, Delete. CRUD Operations
+
+```js
+const express = require('express');
+const router = express.Router();
+
+const Book = require('../models/Book');
+
+// Create document
+router.post('/', async function(req, res, next) {
+    const book = new Book({ title: req.body.title, slug: req.body.slug });
+
+    try {
+        await book.save();
+    } catch (error) {
+        res.json({ error: error.message });
+    }
+
+    res.json(book);
+});
+
+// List All Document
+router.get('/', async function(req, res, next) {
+    const books = await Book.find({});
+
+    res.json(books);
+});
+
+// Update Document
+router.put('/:id', async function(req, res, next) {
+    const data = await Book.updateOne({ _id: req.params.id }, { title: req.body.title });
+    /*
+    returns
+      matchedCount; // Number of documents matched
+      modifiedCount; // Number of documents modified
+      acknowledged; // Boolean indicating the MongoDB server received the operation. This may be false if Mongoose did not send an update to the server because the update was empty.
+      upsertedId; // null or an id containing a document that had to be upserted.
+      upsertedCount; // Number indicating how many documents had to be upserted. Will either be 0 or 1.
+    */
+    res.json({ 'success': true, data })
+});
+
+// Delete Document
+router.delete('/:id', async function(req, res, next) {
+    const data = await Book.deleteOne({ _id: req.params.id });
+    // returns {deletedCount: 1}
+
+    res.json({ 'success': true, data })
+})
+
+module.exports = router;
+```
+
+### $exists
+
+* Only returns documents that exist title field.
+
+```js
+const books = await Book.find({
+      title: {
+        $exists: true
+      }
+  });
+```
+
+### minLength, maxLength, min, max
+
+```js
+const BookSchema = new Schema({
+    title: {
+        type: String,
+        default: 'Default Title', // default value if key not exists
+        maxlength: [5, 'Maximum Character Count Exceeded for "{PATH}", Entered Value: "{VALUE}"'], // Maximum character count
+        minLength: 2,
+    },
+    slug: {
+        type: String, // data type
+        required: true, // is data required or not
+    },
+    numberOfPages: {
+        type: Number,
+        min: 1,
+        max: 2000
+    }
+});
+```
