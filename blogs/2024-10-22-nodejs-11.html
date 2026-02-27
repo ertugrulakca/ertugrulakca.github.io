@@ -1,9 +1,14 @@
----
-layout: post
-title:  "HTTP Server and Nodemon"
-date:   2024-10-22 11:30:34 +0300
-categories: nodejs
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>HTTP Server and Nodemon</title>
+</head>
+<body>
+  <h1>HTTP Server and Nodemon</h1>
+  <p>Date: 2024-10-22 11:30:34 +0300</p>
+
+  <pre>
 ### Serve an HTTP Server
 
 ```js
@@ -11,7 +16,7 @@ const http = require('http');
 
 const server = http.createServer((request, response) => {
     response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.write("<b>Hello</b> world!");
+    response.write("&lt;b&gt;Hello&lt;/b&gt; world!");
     response.end();
 });
 
@@ -53,7 +58,7 @@ const server = http.createServer((request, response) => {
     response.writeHead(200, { 'Content-Type': 'text/html' });
     
     if (request.method === 'GET' && request.url === '/') {
-        response.write("<b>Hello</b> world!");
+        response.write("&lt;b&gt;Hello&lt;/b&gt; world!");
     } else if (request.method === 'GET' && request.url === '/contact') {
         response.write("Contact Page");
     } else {
@@ -172,3 +177,12 @@ const server = http.createServer((request, response) => {
 
 server.listen(3000);
 ```
+  </pre>
+
+  <p>
+    <a href="/blogs/index.html">Back to blog index</a> |
+    <a href="/index.html">Back to CV</a>
+  </p>
+</body>
+</html>
+

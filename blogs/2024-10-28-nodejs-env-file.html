@@ -1,10 +1,14 @@
----
-layout: post
-title:  "Environment Variables"
-date:   2024-10-28 22:30:00 +0300
-categories: nodejs
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Environment Variables</title>
+</head>
+<body>
+  <h1>Environment Variables</h1>
+  <p>Date: 2024-10-28 22:30:00 +0300</p>
 
+  <pre>
 * On cloud side; you can use custom solutions for environment variables. For example, AWS Secrets Manager, Azure Key Vault, Google Cloud Secret Manager and more. These services keep your secret values. In local environment, We will keep values on `.env` file.
 
 ```shell
@@ -16,3 +20,12 @@ require('dotenv').config();
 
 console.log(process.env.DATABASE_URI); // DATABASE_URI is an example. you can use your custom key
 ```
+  </pre>
+
+  <p>
+    <a href="/blogs/index.html">Back to blog index</a> |
+    <a href="/index.html">Back to CV</a>
+  </p>
+</body>
+</html>
+

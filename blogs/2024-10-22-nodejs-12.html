@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Express</title>
+</head>
+<body>
+  <h1>Express</h1>
+  <p>Date: 2024-10-22 11:30:34 +0300</p>
+
+  <pre>
+### Express.js
+
+```js
+const express = require('express');
+
+const app = express();
+
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+})
+
+app.listen(3000);
+```
+
+### Static Files 
+
+```js
+app.use(express.static('public'));
+```
+  </pre>
+
+  <p>
+    <a href="/blogs/index.html">Back to blog index</a> |
+    <a href="/index.html">Back to CV</a>
+  </p>
+</body>
+</html>
+

@@ -1,10 +1,14 @@
----
-layout: post
-title:  "Mongoose Paginate"
-date:   2024-10-28 22:30:00 +0300
-categories: nodejs
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Mongoose Paginate</title>
+</head>
+<body>
+  <h1>Mongoose Paginate</h1>
+  <p>Date: 2024-10-28 22:30:00 +0300</p>
 
+  <pre>
 ### Custom
 
 ```js
@@ -83,3 +87,12 @@ const movies = await Movie.paginate(filter, {
     projection: {title: 1, year: 1, poster: 1, imdb: 1}
 }).then({});
 ```
+  </pre>
+
+  <p>
+    <a href="/blogs/index.html">Back to blog index</a> |
+    <a href="/index.html">Back to CV</a>
+  </p>
+</body>
+</html>
+
