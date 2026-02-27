@@ -8,68 +8,40 @@
   <h1>MongoDB</h1>
   <p>Date: 2024-10-23 12:30:00 +0300</p>
 
-  <pre>
-### Installation
-
-```shell
-brew tap mongodb/brew
+  <article>
+    <h2>Installation</h2>
+    <pre><code>brew tap mongodb/brew
 brew update
 brew install mongodb-community@8.0
 brew services start mongodb-community@8.0
-mongosh
-```
+mongosh</code></pre>
 
-### Create Collection
+    <h2>Create Collection</h2>
+    <pre><code>use blog
+db.createCollection("posts")</code></pre>
 
-```shell
-use blog
-db.createCollection("posts")
-```
+    <h2>Insert One</h2>
+    <pre><code>db.posts.insertOne({ id: 1, title: 'blog 1' })</code></pre>
 
-### Insert One
+    <h2>Insert Many</h2>
+    <pre><code>db.posts.insertMany([{ id: 1, title: 'blog 1' }, { id: 2, title: 'blog 2' }])</code></pre>
 
-```shell
-db.posts.insertOne({ id: 1, title: 'blog 1' })
-```
+    <h2>Get All Data</h2>
+    <pre><code>db.posts.find({})</code></pre>
 
-### Insert Many
+    <h2>Get Filtered Data</h2>
+    <pre><code>db.posts.find({slug:'blog-1'})</code></pre>
 
-```shell
-db.posts.insertMany([{ id: 1, title: 'blog 1' }, { id: 2, title: 'blog 2' }])
-```
+    <h2>Delete All Data</h2>
+    <pre><code>db.books.deleteMany({})</code></pre>
 
-### Get All Data
+    <h2>findOne</h2>
+    <p>Only title field included.</p>
+    <pre><code>db.posts.findOne({ slug:'blog-1' }, { title: 1 })</code></pre>
 
-```shell
-db.posts.find({})
-```
-
-### Get Filtered Data
-
-```shell
-db.posts.find({slug:'blog-1'})
-```
-
-### Delete All Data
-
-```shell
- db.books.deleteMany({})
-```
-
-### findOne
-
-* Only title field included.
-
-```shell
-db.posts.findOne({ slug:'blog-1' }, { title: 1 })
-```
-
-* Eclude slug field.
-
-```shell
-db.posts.findOne({ slug:'blog-1' }, { slug: 0 })
-```
-  </pre>
+    <p>Exclude slug field.</p>
+    <pre><code>db.posts.findOne({ slug:'blog-1' }, { slug: 0 })</code></pre>
+  </article>
 
   <p>
     <a href="/blogs/index.html">Back to blog index</a> |

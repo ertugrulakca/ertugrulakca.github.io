@@ -8,55 +8,41 @@
   <h1>NodeJS Fundementals #2</h1>
   <p>Date: 2024-10-22 11:30:34 +0300</p>
 
-  <pre>
-### Functions 
-
-```js
-function sum(a, b = 0) {
+  <article>
+    <h2>Functions</h2>
+    <pre><code>function sum(a, b = 0) {
     return a + b;
 }
 
 console.log(sum(5, 3)); // 8
-console.log(sum(5)); // 5
-```
+console.log(sum(5)); // 5</code></pre>
 
-### Callback Functions
-
-```js
-function run(text, callback) {
+    <h2>Callback Functions</h2>
+    <pre><code>function run(text, callback) {
     console.log(text);
     callback();
 } 
 
 run('Hello World', function () {
     console.log('Callback Function')
-})
-```
+})</code></pre>
 
-### "setTimeout" function
-
-```js
-setTimeout(function () {
+    <h2>"setTimeout" function</h2>
+    <pre><code>setTimeout(function () {
     console.log('Wrote after 5 seconds');
-}, 5000)
-```
+}, 5000)</code></pre>
 
-### "setInterval" function
-
-```js
-const myInterval = setInterval(function () {
+    <h2>"setInterval" function</h2>
+    <pre><code>const myInterval = setInterval(function () {
     console.log('Writes every 2 seconds forever');
 }, 2000);
 
 setTimeout(function () {
     clearInterval(myInterval);
-}, 7000);
-```
+}, 7000);</code></pre>
 
-### For Loop
-
-```js
-for (var i = 0; i < 5; i++) {
+    <h2>For Loop</h2>
+    <pre><code>for (var i = 0; i &lt; 5; i++) {
     console.log(i)
 }
 
@@ -67,15 +53,12 @@ output:
 2
 3
 4
-*/
-```
+*/</code></pre>
 
-### While Loop
+    <h2>While Loop</h2>
+    <pre><code>var i = 0;
 
-```js
-var i = 0;
-
-while (i < 5) {
+while (i &lt; 5) {
     console.log(i++);
 }
 
@@ -86,17 +69,14 @@ output:
 2
 3
 4
-*/
-```
+*/</code></pre>
 
-### Do-While Loop
-
-```js
-var i = 0;
+    <h2>Do-While Loop</h2>
+    <pre><code>var i = 0;
 
 do {
     console.log(i++);  
-} while (i < 5);
+} while (i &lt; 5);
 
 /*
 output:
@@ -105,9 +85,8 @@ output:
 2
 3
 4
-*/
-```
-  </pre>
+*/</code></pre>
+  </article>
 
   <p>
     <a href="/blogs/index.html">Back to blog index</a> |

@@ -8,35 +8,28 @@
   <h1>Nginx Configurations</h1>
   <p>Date: 2024-12-19 22:00:00 +0300</p>
 
-  <pre>
-## Nginx Configurations
+  <p>Date: 2024-12-19 22:00:00 +0300</p>
 
-* Deny all private files except start name with ".well-known"
+  <article>
+    <h2>Nginx Configurations</h2>
 
-```conf
-location ~ /\.(?!well-known).* {
+    <h3>Deny all private files except start name with ".well-known"</h3>
+    <pre><code>location ~ /\.(?!well-known).* {
     deny all;
-}
-```
+}</code></pre>
 
-* Minimum Configurations FasTCGI proxying scenario for PHP
-
-```conf
-location ~ \.php$ {
+    <h3>Minimum Configurations FastCGI proxying scenario for PHP</h3>
+    <pre><code>location ~ \.php$ {
     fastcgi_param REQUEST_METHOD $request_method;
     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     fastcgi_pass 127.0.0.1:9000;
-}
-```
+}</code></pre>
 
-* This line provide default configurations to this scope.
-
-```conf
-location ~ \.php$ {
+    <h3>Default configurations for this scope</h3>
+    <pre><code>location ~ \.php$ {
     include fastcgi_params;
-}
-```
-  </pre>
+}</code></pre>
+  </article>
 
   <p>
     <a href="/blogs/index.html">Back to blog index</a> |

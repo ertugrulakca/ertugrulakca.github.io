@@ -8,15 +8,11 @@
   <h1>Pug</h1>
   <p>Date: 2024-10-22 17:55:34 +0300</p>
 
-  <pre>
-### Pug
+  <article>
+    <h2>Pug</h2>
+    <pre><code>npm i pug</code></pre>
 
-```shell
-npm i pug
-```
-
-```js
-const express = require('express');
+    <pre><code>const express = require('express');
 
 const app = express();
 
@@ -26,22 +22,17 @@ app.get('/', (req, res) => {
     res.render('index');
 })
 
-app.listen(3000);
-```
+app.listen(3000);</code></pre>
 
-```jade
-html
+    <pre><code>html
     head
         title My Title Here
     body
         span(style="color: red; background-color:green;")
-            | Hello World
-```
+            | Hello World</code></pre>
 
-### Send Parameter to Pug
-
-```js
-const express = require('express');
+    <h2>Send Parameter to Pug</h2>
+    <pre><code>const express = require('express');
 
 const app = express();
 
@@ -51,61 +42,43 @@ app.get('/', (req, res) => {
     res.render('index', { key: 'My World' });
 })
 
-app.listen(3000);
-```
+app.listen(3000);</code></pre>
 
-```jade
-html
+    <pre><code>html
     head
         title My Title Here
     body
         span(style="color: red; background-color:green;")
-            | Hello #{key}
-```
+            | Hello #{key}</code></pre>
 
-### Include Pug to another pug file
+    <h2>Include Pug to another pug file</h2>
+    <pre><code>include header.pug
+include footer</code></pre>
 
-```jade
-include header.pug
-include footer
-```
+    <h2>Pug Comment Line</h2>
+    <pre><code>// this is a comment line in pug file</code></pre>
 
-### Pug Comment Line
-
-```jade
-// this is a comment line in pug file
-```
-
-### Define variables
-
-```jade
-- const myConst = 3.14;
+    <h2>Define variables</h2>
+    <pre><code>- const myConst = 3.14;
 
 div
-    | Number: #{ myConst }
-```
+    | Number: #{ myConst }</code></pre>
 
-### If Statement
-
-```jade  
-- const myBool = true;
+    <h2>If Statement</h2>
+    <pre><code>- const myBool = true;
 
 if myBool
     div 
         | My div here
 else 
     div
-        | My Else div
-```
+        | My Else div</code></pre>
 
-### Pug foreach loop
-
-```jade
-- const values = [1, 2, 3, 4, 5];
+    <h2>Pug foreach loop</h2>
+    <pre><code>- const values = [1, 2, 3, 4, 5];
     each val in values
-        li= val
-```
-  </pre>
+        li= val</code></pre>
+  </article>
 
   <p>
     <a href="/blogs/index.html">Back to blog index</a> |

@@ -8,11 +8,9 @@
   <h1>HTTP Server and Nodemon</h1>
   <p>Date: 2024-10-22 11:30:34 +0300</p>
 
-  <pre>
-### Serve an HTTP Server
-
-```js
-const http = require('http');
+  <article>
+    <h2>Serve an HTTP Server</h2>
+    <pre><code>const http = require('http');
 
 const server = http.createServer((request, response) => {
     response.writeHead(200, { 'Content-Type': 'text/html' });
@@ -20,21 +18,14 @@ const server = http.createServer((request, response) => {
     response.end();
 });
 
-server.listen(3000);
-```
+server.listen(3000);</code></pre>
 
-### Nodemon
+    <h2>Nodemon</h2>
+    <pre><code>npm install -g nodemon
+nodemon helloworld.js</code></pre>
 
-```shell
-npm install -g nodemon
-nodemon helloworld.js
-```
-
-
-### Serve an HTML File
-
-```js
-const http = require('http');
+    <h2>Serve an HTML File</h2>
+    <pre><code>const http = require('http');
 const fs = require('fs');
 
 const server = http.createServer((request, response) => {
@@ -46,13 +37,10 @@ const server = http.createServer((request, response) => {
     })
 });
 
-server.listen(3000);
-```
+server.listen(3000);</code></pre>
 
-### Simple Routing
-
-```js
-const http = require('http');
+    <h2>Simple Routing</h2>
+    <pre><code>const http = require('http');
 
 const server = http.createServer((request, response) => {
     response.writeHead(200, { 'Content-Type': 'text/html' });
@@ -68,13 +56,10 @@ const server = http.createServer((request, response) => {
     response.end();
 });
 
-server.listen(3000);
-```
+server.listen(3000);</code></pre>
 
-### File Read Stream
-
-```js
-const fs = require('fs');
+    <h2>File Read Stream</h2>
+    <pre><code>const fs = require('fs');
 
 const file = 'file-path';
 const readStream = fs.createReadStream(file);
@@ -94,13 +79,10 @@ fs.stat(file, (err, stats) => {
     readStream.on('end', () => {
         console.log('end');
     })
-})
-```
+})</code></pre>
 
-### File Write stream
-
-```js
-const fs = require('fs');
+    <h2>File Write stream</h2>
+    <pre><code>const fs = require('fs');
 
 const file = '../../Documents/Github/my-awesome-site/assets/images/me.JPG';
 const readStream = fs.createReadStream(file);
@@ -126,14 +108,10 @@ fs.stat(file, (err, stats) => {
     readStream.on('end', () => {
         console.log('end');
     })
-});
-```
- 
+});</code></pre>
 
-### Serve chunked file 
-
-```js
-const fs = require('fs');
+    <h2>Serve chunked file</h2>
+    <pre><code>const fs = require('fs');
 const http = require('http');
 
 const server = http.createServer((request, response) => {
@@ -142,14 +120,10 @@ const server = http.createServer((request, response) => {
     fs.createReadStream(file).pipe(response);
 });
 
-server.listen(3000);
-```
+server.listen(3000);</code></pre>
 
-
-### Example | Finish request on half of progress
-
-```js
-const fs = require('fs');
+    <h2>Example | Finish request on half of progress</h2>
+    <pre><code>const fs = require('fs');
 const http = require('http');
 
 const server = http.createServer((request, response) => {
@@ -175,9 +149,8 @@ const server = http.createServer((request, response) => {
     })
 });
 
-server.listen(3000);
-```
-  </pre>
+server.listen(3000);</code></pre>
+  </article>
 
   <p>
     <a href="/blogs/index.html">Back to blog index</a> |

@@ -8,11 +8,11 @@
   <h1>MongoDB with NodeJS</h1>
   <p>Date: 2024-10-23 12:30:00 +0300</p>
 
-  <pre>
-### Connect Database
+  <p>Date: 2024-10-23 12:30:00 +0300</p>
 
-```js
-var mongoose = require('mongoose');
+  <article>
+    <h2>Connect Database</h2>
+    <pre><code>var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/blog')
     .then(() => {
@@ -20,13 +20,10 @@ mongoose.connect('mongodb://localhost/blog')
     })
     .catch((err) => {
         console.log('DB Error');
-    });
-```
+    });</code></pre>
 
-### Schema (Book.js)
-
-```js
-const mongoose = require('mongoose');
+    <h2>Schema (Book.js)</h2>
+    <pre><code>const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
@@ -41,13 +38,10 @@ const BookSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('book', BookSchema);
-```
+module.exports = mongoose.model('book', BookSchema);</code></pre>
 
-### Create, Read, Update, Delete. CRUD Operations
-
-```js
-const express = require('express');
+    <h2>Create, Read, Update, Delete. CRUD Operations</h2>
+    <pre><code>const express = require('express');
 const router = express.Router();
 
 const Book = require('../models/Book');
@@ -94,25 +88,18 @@ router.delete('/:id', async function(req, res, next) {
     res.json({ 'success': true, data })
 })
 
-module.exports = router;
-```
+module.exports = router;</code></pre>
 
-### $exists
-
-* Only returns documents that exist title field.
-
-```js
-const books = await Book.find({
+    <h2>$exists</h2>
+    <p>Only returns documents that exist title field.</p>
+    <pre><code>const books = await Book.find({
       title: {
         $exists: true
       }
-  });
-```
+  });</code></pre>
 
-### minLength, maxLength, min, max
-
-```js
-const BookSchema = new Schema({
+    <h2>minLength, maxLength, min, max</h2>
+    <pre><code>const BookSchema = new Schema({
     title: {
         type: String,
         default: 'Default Title', // default value if key not exists
@@ -128,9 +115,8 @@ const BookSchema = new Schema({
         min: 1,
         max: 2000
     }
-});
-```
-  </pre>
+});</code></pre>
+  </article>
 
   <p>
     <a href="/blogs/index.html">Back to blog index</a> |

@@ -8,44 +8,38 @@
   <h1>Mongoose Paginate</h1>
   <p>Date: 2024-10-28 22:30:00 +0300</p>
 
-  <pre>
-### Custom
+  <p>Date: 2024-10-28 22:30:00 +0300</p>
 
-```js
-const page = req.query.page > 0 ? (req.query.page ?? 1) : 1;
-    const limit = req.query.limit ?? 50;
-    const offset = (page - 1) * limit;
+  <article>
+    <h2>Custom</h2>
+    <pre><code>const page = req.query.page > 0 ? (req.query.page ?? 1) : 1;
+const limit = req.query.limit ?? 50;
+const offset = (page - 1) * limit;
 
-    const movies = await Movie.aggregate([
-        {
-            $project: {
-                title: true,
-                year: true,
-                imdb: true,
-                poster: true
-            }
-        },
-        {
-            $skip: offset
-        },
-        {
-            $limit: limit
+const movies = await Movie.aggregate([
+    {
+        $project: {
+            title: true,
+            year: true,
+            imdb: true,
+            poster: true
         }
-    ]);
+    },
+    {
+        $skip: offset
+    },
+    {
+        $limit: limit
+    }
+]);
 
-    res.render('movies/index', {movies});
-```
+res.render('movies/index', {movies});</code></pre>
 
-### With Module(mongoose-paginate)
+    <h2>With Module (mongoose-paginate)</h2>
+    <pre><code>npm install mongoose-paginate</code></pre>
 
-```shell
-npm install mongoose-paginate
-```
-
-* Schema
-
-```js
-const mongoose = require('mongoose');
+    <h3>Schema</h3>
+    <pre><code>const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2'); // add this line
 
 const Schema = mongoose.Schema;
@@ -66,13 +60,10 @@ const MovieSchema = new Schema({
 }).plugin(mongoosePaginate); // add this line
 
 
-module.exports = mongoose.model('movies', MovieSchema);
-```
+module.exports = mongoose.model('movies', MovieSchema);</code></pre>
 
-* Controller
-
-```js
-const page = req.query.page ?? 1;
+    <h3>Controller</h3>
+    <pre><code>const page = req.query.page ?? 1;
 const limit = req.query.limit ?? 15;
 const search = req.query.search ?? '';
 const filter = {};
@@ -85,9 +76,8 @@ const movies = await Movie.paginate(filter, {
     page,
     limit,
     projection: {title: 1, year: 1, poster: 1, imdb: 1}
-}).then({});
-```
-  </pre>
+}).then({});</code></pre>
+  </article>
 
   <p>
     <a href="/blogs/index.html">Back to blog index</a> |

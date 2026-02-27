@@ -8,59 +8,42 @@
   <h1>Mongoose Schema Validation</h1>
   <p>Date: 2024-10-24 10:30:00 +0300</p>
 
-  <pre>
-### Sorting
+  <p>Date: 2024-10-24 10:30:00 +0300</p>
 
-```js
-const books = await Book.find({}).sort({title:1}); // ASC
-const books = await Book.find({}).sort({title:-1}); // DESC
-```
+  <article>
+    <h2>Sorting</h2>
+    <pre><code>const books = await Book.find({}).sort({title:1}); // ASC
+const books = await Book.find({}).sort({title:-1}); // DESC</code></pre>
 
-### Limit
+    <h2>Limit</h2>
+    <pre><code>const books = await Book.find({}).sort({title:-1}).limit(2);</code></pre>
 
-```js
-const books = await Book.find({}).sort({title:-1}).limit(2);
-```
+    <h2>Skip</h2>
+    <p>Skip first n record</p>
+    <pre><code>const books = await Book.find({}).sort({title:1}).skip(2).limit(2);</code></pre>
 
-### Skip
-
-* Skip first n record
-
-```js
-const books = await Book.find({}).sort({title:1}).skip(2).limit(2);
-```
-
-### $match
-
-```js
-const books = await Book.aggregate([
+    <h2>$match</h2>
+    <pre><code>const books = await Book.aggregate([
     {
         $match: {
             title: 'a'
         }
     }
-]);
-```
+]);</code></pre>
 
-### $group
-
-* Sum
-
-```js
-const books = await Book.aggregate([
+    <h2>$group</h2>
+    <p>Sum</p>
+    <pre><code>const books = await Book.aggregate([
     {
         $group: {
             _id: '$title',
             myCount: { $sum: 1 }
         }
     }
-]);
-```
+]);</code></pre>
 
-### $project
-
-```js
-router.get('/', async function(req, res, next) {
+    <h2>$project</h2>
+    <pre><code>router.get('/', async function(req, res, next) {
     const books = await Book.aggregate([
         {
             $project: {
@@ -70,13 +53,10 @@ router.get('/', async function(req, res, next) {
     ]);
 
     res.json(books);
-});
-```
+});</code></pre>
 
-### $sort, $limit, $skip
-
-```js
-router.get('/', async function(req, res, next) {
+    <h2>$sort, $limit, $skip</h2>
+    <pre><code>router.get('/', async function(req, res, next) {
     const books = await Book.aggregate([
         {
             $project: {
@@ -97,18 +77,13 @@ router.get('/', async function(req, res, next) {
     ]);
 
     res.json(books);
-});
-```
+});</code></pre>
 
-### $lookup
+    <h2>$lookup</h2>
+    <pre><code>db.users.insertOne({name: 'John', username: 'johndoe'})
+db.books.insertOne({title: 'Foo', userId: ObjectId('6719ef784f09ffb8a481d77c')})</code></pre>
 
-```shell
-db.users.insertOne({name: 'John', username: 'johndoe'})
-db.books.insertOne({title: 'Foo', userId: ObjectId('6719ef784f09ffb8a481d77c')})
-```
-
-```js
-const books = await Book.aggregate([
+    <pre><code>const books = await Book.aggregate([
     {
         $lookup: {
             from: 'users',
@@ -117,16 +92,11 @@ const books = await Book.aggregate([
             as: 'user'
         }
     }
-]);
-```
+]);</code></pre>
 
-### $unwind
-
-* Extract to a user object
-* Field include and exclude with $project
-
-```js
-const books = await Book.aggregate([
+    <h2>$unwind</h2>
+    <p>Extract to a user object. Field include and exclude with $project.</p>
+    <pre><code>const books = await Book.aggregate([
     {
         $lookup: {
             from: 'users',
@@ -144,9 +114,8 @@ const books = await Book.aggregate([
             username: '$user.username',
         }
     }
-]);
-```
-  </pre>
+]);</code></pre>
+  </article>
 
   <p>
     <a href="/blogs/index.html">Back to blog index</a> |

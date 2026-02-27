@@ -8,11 +8,9 @@
   <h1>Events - I/O</h1>
   <p>Date: 2024-10-22 11:30:34 +0300</p>
 
-  <pre>
-### Event Emitter
-
-```js
-const events = require('events');
+  <article>
+    <h2>Event Emitter</h2>
+    <pre><code>const events = require('events');
 const eventEmitter = new events.EventEmitter();
 
 eventEmitter.on('test', () => {
@@ -34,57 +32,44 @@ output:
 hello world
 hello world
 hello world once
-*/
-```
+*/</code></pre>
 
-### File Read
-
-```js
-const fs = require('fs');
+    <h2>File Read</h2>
+    <pre><code>const fs = require('fs');
 
 fs.readFile('./test.txt', 'utf8', (err, data) => {
     if (err) throw err;
 
     console.log(data)
-});
-```
+});</code></pre>
 
-### File Append
-
-```js
-const fs = require('fs');
+    <h2>File Append</h2>
+    <pre><code>const fs = require('fs');
 
 fs.appendFile('./test.txt', 'hello', (err) => {
     if (err) throw err;
 
     console.log('Completed');
-});
-```
+});</code></pre>
 
-### File Write
-
-```js
-const fs = require('fs');
+    <h2>File Write</h2>
+    <pre><code>const fs = require('fs');
 
 fs.writeFile('./test.txt', 'hello \n', (err) => {
     if (err) throw err;
 
     console.log('Completed');
-});
-```
+});</code></pre>
 
-### Delete File
-
-```js
-const fs = require('fs');
+    <h2>Delete File</h2>
+    <pre><code>const fs = require('fs');
 
 fs.unlink('./test.txt', (err) => {
     if (err) throw err;
 
     console.log('Deleted');
-})
-```
-  </pre>
+})</code></pre>
+  </article>
 
   <p>
     <a href="/blogs/index.html">Back to blog index</a> |
