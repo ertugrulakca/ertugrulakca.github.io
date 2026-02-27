@@ -8,55 +8,45 @@
   <h1>Express Route</h1>
   <p>Date: 2024-10-22 19:30:34 +0300</p>
 
-  <pre>
-### Route Expressions
+  <article>
+    <h2>Route Expressions</h2>
+    <ul>
+      <li><code>?</code>: left is an optional value</li>
+      <li><code>*</code>: any value</li>
+      <li><code>+</code>: left part should be match</li>
+    </ul>
 
-* "?": left is an optional value
-* "*": any value
-* "+": left part should be match
-
-```js
-app.get('/u+s?er*', (req, res) => {
+    <pre><code>app.get('/u+s?er*', (req, res) =&gt; {
     res.render('index', { key: 'My World' });
-})
-```
+})</code></pre>
 
-* "all": accepts all methods (get, post, put, delete etc.)
-
-```js
-app.all('/home', (req, res) => {
+    <p><code>all</code>: accepts all methods (get, post, put, delete etc.)</p>
+    <pre><code>app.all('/home', (req, res) =&gt; {
     res.render('index', { key: 'My World' });
-})
-```
+})</code></pre>
 
-### Route Parameter
-
-```js
-const express = require('express');
+    <h2>Route Parameter</h2>
+    <pre><code>const express = require('express');
 
 const app = express();
 
-app.get('/users/:id', (req, res) => {
+app.get('/users/:id', (req, res) =&gt; {
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.write('userId: ' + req.params.id);
     res.end();
-})
-```
+})</code></pre>
 
-### Optional Route Parameter
-
-```js
-const express = require('express');
+    <h2>Optional Route Parameter</h2>
+    <pre><code>const express = require('express');
 
 const app = express();
 
-app.get('/users/:id?', (req, res) => {
+app.get('/users/:id?', (req, res) =&gt; {
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.write('userId: ' + req.params.id);
     res.end();
-})
-```
-  </pre>
+})</code></pre>
+  </article>
 
   <p>
     <a href="/blogs/index.html">Back to blog index</a> |

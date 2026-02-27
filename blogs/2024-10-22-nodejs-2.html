@@ -8,26 +8,20 @@
   <h1>Pug Layouts</h1>
   <p>Date: 2024-10-22 19:30:34 +0300</p>
 
-  <pre>
-### Pug Layout Extends
+  <article>
+    <h2>Pug Layout Extends</h2>
 
-* Layout file
-
-```jade
-head
+    <h3>Layout file</h3>
+    <pre><code>head
     block stylesheet
         link(href="layout.css" rel="stylesheet")
 body
     block content
-    block scripts
-```
+    block scripts</code></pre>
 
-* Home page
-
-Use append to add more code to block
-
-```jade
-extends layout
+    <h3>Home page</h3>
+    <p>Use append to add more code to block.</p>
+    <pre><code>extends layout
 
 block append stylesheet
     link(href="home.css" rel="stylesheet")
@@ -35,20 +29,16 @@ block append stylesheet
 block content
     | Home Page
     br
-    a(href="/contact") Go to Contact
-```
+    a(href="/contact") Go to Contact</code></pre>
 
-* Contact
-
-```jade
-extends layout
+    <h3>Contact</h3>
+    <pre><code>extends layout
 
 block content
     | Contact Page
     br
-    a(href="/home") Go to Home
-```
-  </pre>
+    a(href="/home") Go to Home</code></pre>
+  </article>
 
   <p>
     <a href="/blogs/index.html">Back to blog index</a> |

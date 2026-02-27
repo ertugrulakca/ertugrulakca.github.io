@@ -8,15 +8,13 @@
   <h1>Express Middleware</h1>
   <p>Date: 2024-10-22 19:30:34 +0300</p>
 
-  <pre>
-### Express Middleware
-
-```js
-const express = require('express');
+  <article>
+    <h2>Express Middleware</h2>
+    <pre><code>const express = require('express');
 
 const app = express();
 
-app.use('/home', (req, res, next) => {
+app.use('/home', (req, res, next) =&gt; {
     const isLoggedIn = false;
 
     if (!isLoggedIn) {
@@ -26,25 +24,22 @@ app.use('/home', (req, res, next) => {
     next();
 });
 
-app.get('/home', (request, response) => {
+app.get('/home', (request, response) =&gt; {
     response.send('home');
 });
 
-app.get('/contact', (request, response) => {
+app.get('/contact', (request, response) =&gt; {
     response.send('contact');
 });
 
-app.listen(3000);
-```
+app.listen(3000);</code></pre>
 
-### Apply Middleware in Route Definitions
-
-```js
-const express = require('express');
+    <h2>Apply Middleware in Route Definitions</h2>
+    <pre><code>const express = require('express');
 const app = express();
 
 // also can import in another file
-const auth = (req, res, next) => {
+const auth = (req, res, next) =&gt; {
     const isLoggedIn = false;
 
     if (!isLoggedIn) {
@@ -54,17 +49,16 @@ const auth = (req, res, next) => {
     next();
 }
 
-app.get('/home', auth, (request, response) => {
+app.get('/home', auth, (request, response) =&gt; {
     response.send('home');
 });
 
-app.get('/contact', (request, response) => {
+app.get('/contact', (request, response) =&gt; {
     response.send('contact');
 });
 
-app.listen(3000);
-```
-  </pre>
+app.listen(3000);</code></pre>
+  </article>
 
   <p>
     <a href="/blogs/index.html">Back to blog index</a> |
